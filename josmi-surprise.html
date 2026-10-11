@@ -1,0 +1,239 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>For Josmi 💗</title>
+<style>
+*{box-sizing:border-box}
+:root{--pink:#ff609c;--dark:#742747;--light:#fff0f6}
+body{
+ margin:0;min-height:100vh;overflow-x:hidden;
+ font-family:Georgia,"Times New Roman",serif;color:#682743;
+ background:linear-gradient(135deg,#ffe5ef,#fff4f7 45%,#ffd8e8);
+}
+#flowers{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:0}
+.flower{position:absolute;bottom:-45px;animation:float 12s linear forwards;opacity:.65}
+@keyframes float{to{transform:translateY(-115vh) rotate(330deg);opacity:0}}
+main{position:relative;z-index:1;width:min(92%,520px);margin:auto;padding:30px 0 45px}
+header{text-align:center;margin-bottom:22px}
+.eyebrow{letter-spacing:3px;text-transform:uppercase;font-size:11px;color:#b64c77}
+h1{font-size:clamp(36px,8vw,50px);margin:12px 0;color:#a82f62}
+h1 span{color:#ef5c99}
+header p{color:#99536e;line-height:1.6}
+.card{
+ display:none;background:#ffffffd9;border:1px solid #fff;
+ border-radius:25px;padding:27px 23px;
+ box-shadow:0 15px 45px #b34e7820;
+ animation:appear .35s ease;backdrop-filter:blur(8px)
+}
+.card.active{display:block}
+@keyframes appear{from{opacity:0;transform:translateY(9px)}to{opacity:1;transform:none}}
+.emoji{text-align:center;font-size:43px}
+h2{text-align:center;font-size:27px;color:#a83265;margin:12px 0}
+p{line-height:1.75}
+.center{text-align:center}
+.buttons{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:23px}
+button{
+ border:1px solid #f2b6cf;background:#fff7fa;color:#9e3762;
+ padding:12px 18px;border-radius:30px;font-size:15px;cursor:pointer;
+ transition:transform .2s,box-shadow .2s
+}
+button:hover{transform:translateY(-2px);box-shadow:0 5px 15px #d85a8d25}
+.primary{background:linear-gradient(135deg,#ff83b2,#ed4e91);color:white;border:0;font-weight:bold}
+.foods{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:18px}
+.food{border-radius:15px;padding:16px 8px;background:#fff7fa}
+.food.selected{background:#ffe0ed;border:2px solid #ed5b97}
+label{display:block;margin:16px 0 7px;font-weight:bold;color:#994265}
+input,textarea{
+ width:100%;padding:13px;border:1px solid #efbfd2;border-radius:12px;
+ background:#fffafd;color:#642743;font:15px Arial,sans-serif
+}
+textarea{min-height:75px;resize:vertical}
+.note{font-size:12px;color:#a36a81}
+.line{height:1px;background:#f5d6e2;margin:20px 0}
+.fee{text-align:center;border:1px dashed #f09cbd;border-radius:17px;padding:18px;background:#fff4f8}
+.amount{font-size:42px;color:#d93e82;font-weight:bold;margin:10px}
+.success{font-size:14px;color:#43865d;font-weight:bold}
+.final-message{line-height:1.9;background:#fff5f9;border-radius:16px;padding:18px;text-align:center}
+#summary{background:#fff4f8;border-radius:15px;padding:15px;line-height:1.8;overflow-wrap:anywhere}
+footer{text-align:center;font-size:12px;color:#a86680;padding:24px 0}
+@media(max-width:360px){.foods{grid-template-columns:1fr}.card{padding:22px 17px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+</style>
+</head>
+<body>
+<div id="flowers"></div>
+<main>
+<header>
+ <div class="eyebrow">A little surprise made with love</div>
+ <h1>For <span>Josmi</span> 💗</h1>
+ <p>A little website, a little romance, and one special question.</p>
+</header>
+
+<section class="card active" id="proposal">
+ <div class="emoji">🌹💌🌹</div>
+ <h2>Josmi, will you go on a date with me?</h2>
+ <p class="center">I've been wanting to ask you something special. I'd love to spend time with you, share some delicious food, laugh together, and make a beautiful memory.</p>
+ <p class="center"><strong>Would you give me the chance to take you on a date? ❤️</strong></p>
+ <div class="buttons">
+  <button class="primary" onclick="show('food')">YES, SANJEEV! 💕</button>
+  <button onclick="show('later')">Maybe later 🌷</button>
+ </div>
+</section>
+
+<section class="card" id="later">
+ <div class="emoji">🌸</div><h2>Take your time, Josmi</h2>
+ <p class="center">No pressure at all. Your feelings matter, and you can decide whenever you're ready. I hope this little surprise makes you smile. 💗</p>
+ <div class="buttons"><button class="primary" onclick="show('proposal')">Back to my question</button></div>
+</section>
+
+<section class="card" id="food">
+ <div class="emoji">🍓</div><h2>Yay! Let's plan our date</h2>
+ <p class="center">First, what would you like us to eat together?</p>
+ <div class="foods">
+  <button class="food" data-food="Pizza">🍕 Pizza</button>
+  <button class="food" data-food="Sushi">🍣 Sushi</button>
+  <button class="food" data-food="Burgers">🍔 Burgers</button>
+  <button class="food" data-food="Pasta">🍝 Pasta</button>
+  <button class="food" data-food="Tacos">🌮 Tacos</button>
+  <button class="food" data-food="Ramen">🍜 Ramen</button>
+ </div>
+ <label for="customFood">Or choose your own favourite</label>
+ <input id="customFood" placeholder="Tell me what you're craving…" maxlength="100">
+ <div class="buttons">
+  <button onclick="show('proposal')">Back</button>
+  <button class="primary" onclick="nextFood()">Next 💗</button>
+ </div>
+</section>
+
+<section class="card" id="details">
+ <div class="emoji">🌙✨</div><h2>Our little date plan</h2>
+ <p class="center">You choose what works best for you, Josmi.</p>
+ <label for="date">Date</label><input type="date" id="date">
+ <label for="time">Time</label><input type="time" id="time">
+ <label for="place">Location</label><input id="place" placeholder="Cafe, restaurant, park…" maxlength="150">
+ <label for="extra">Anything else you'd love? (optional)</label>
+ <textarea id="extra" placeholder="Sunset walk, flowers, dessert…" maxlength="250"></textarea>
+ <p class="note">These are suggestions. We'll confirm the details together.</p>
+ <div class="buttons">
+  <button onclick="show('food')">Back</button>
+  <button class="primary" onclick="makePlan()">Continue 💌</button>
+ </div>
+</section>
+
+<section class="card" id="fee">
+ <div class="emoji">💝</div><h2>Our Date Agreement™</h2>
+ <p class="center">Your very official, completely unofficial date booking!</p>
+ <div class="fee">
+  <div>Romantic date booking fee</div>
+  <div class="amount">$0.00</div>
+  <div>100% fake · payable in smiles and hugs 🫶</div>
+ </div>
+ <div class="line"></div>
+ <p class="center">No payment, no card details, no real fees. Just a little joke before the final surprise. 💗</p>
+ <div class="buttons">
+  <button onclick="show('details')">Edit my plan</button>
+  <button class="primary" onclick="finish()">Confirm our date ✨</button>
+ </div>
+</section>
+
+<section class="card" id="final">
+ <div class="emoji">💐💖💐</div>
+ <div class="success center">♡ DATE PLAN READY ♡</div>
+ <h2>Josmi ❤️ Sanjeev</h2>
+ <p class="center">You made this little moment special!</p>
+ <div class="final-message">
+  <strong>Dear Josmi, 💌</strong><br><br>
+  I made this little surprise just for you because I wanted to ask you out in a special way.<br><br>
+  I'd love to share good food with you, hear your stories, see you smile, and spend some lovely time together. Sometimes the simplest moments become the sweetest memories when we share them with someone special.<br><br>
+  I can't promise a perfect day, but I can promise to be genuine, thoughtful, and happy to spend that time with you.<br><br>
+  <strong>Here's to a beautiful date and a lovely memory together. ❤️</strong><br><br>
+  With affection,<br><strong>Sanjeev 🌹</strong>
+ </div>
+ <div id="summary"></div>
+ <div class="buttons">
+  <button class="primary" onclick="sharePlan()">Share our plan with Sanjeev 💌</button>
+  <button onclick="show('food')">Change my choices</button>
+ </div>
+ <p class="note center">Your choices aren't sent automatically. Use the share button to send the plan to Sanjeev, then confirm the details together.</p>
+</section>
+<footer>Made with love by Sanjeev, especially for Josmi 🌷</footer>
+</main>
+
+<script>
+let selectedFood='';
+document.querySelectorAll('.food').forEach(btn=>{
+ btn.addEventListener('click',()=>{
+  selectedFood=btn.dataset.food;
+  document.querySelectorAll('.food').forEach(b=>b.classList.toggle('selected',b===btn));
+  document.getElementById('customFood').value='';
+ });
+});
+document.getElementById('customFood').addEventListener('input',()=>{
+ if(document.getElementById('customFood').value.trim()){
+  selectedFood='';
+  document.querySelectorAll('.food').forEach(b=>b.classList.remove('selected'));
+ }
+});
+function show(id){
+ document.querySelectorAll('.card').forEach(c=>c.classList.remove('active'));
+ document.getElementById(id).classList.add('active');
+ window.scrollTo({top:0,behavior:'smooth'});
+}
+function nextFood(){
+ if(!selectedFood&&!document.getElementById('customFood').value.trim()){
+  alert('Choose a food first, Josmi 💗');return;
+ }
+ show('details');
+}
+function makePlan(){
+ const food=document.getElementById('customFood').value.trim()||selectedFood;
+ const date=document.getElementById('date').value;
+ const time=document.getElementById('time').value;
+ const place=document.getElementById('place').value.trim();
+ if(!food||!date||!time||!place){
+  alert('Please choose your food, date, time and location first 💗');return;
+ }
+ const niceDate=new Date(date+'T12:00:00').toLocaleDateString(undefined,{weekday:'long',year:'numeric',month:'long',day:'numeric'});
+ const niceTime=new Date('2000-01-01T'+time).toLocaleTimeString([],{hour:'numeric',minute:'2-digit'});
+ const rows=[
+  ['Food',food],['Date',niceDate],['Time',niceTime],['Location',place],
+  ['Extra idea',document.getElementById('extra').value.trim()||'Decide together']
+ ];
+ const summary=document.getElementById('summary');
+ summary.replaceChildren();
+ const heading=document.createElement('h3');heading.textContent='💌 Our suggested date plan';summary.appendChild(heading);
+ rows.forEach(([key,value])=>{
+  const p=document.createElement('p');
+  const strong=document.createElement('strong');strong.textContent=key+': ';
+  p.append(strong,document.createTextNode(value));summary.appendChild(p);
+ });
+ show('fee');
+}
+function finish(){show('final')}
+function sharePlan(){
+ const message='Josmi and Sanjeev 💗\nOur suggested date plan:\n'+document.getElementById('summary').innerText+'\n\nLet’s confirm the details together! ❤️';
+ if(navigator.share){
+  navigator.share({title:'Our date plan 💗',text:message}).catch(()=>{});
+ }else{
+  const area=document.createElement('textarea');area.value=message;
+  document.getElementById('final').appendChild(area);area.focus();area.select();
+  try{document.execCommand('copy');alert('If copied, send this plan to Sanjeev 💌');}
+  catch(e){alert('Copy the plan shown in the text box and send it to Sanjeev.');}
+ }
+}
+function addFlower(){
+ const el=document.createElement('span');el.className='flower';
+ el.textContent=['🌸','🌷','💗','🌹','♡'][Math.floor(Math.random()*5)];
+ el.style.left=Math.random()*100+'%';
+ el.style.fontSize=(15+Math.random()*19)+'px';
+ el.style.animationDuration=(8+Math.random()*8)+'s';
+ document.getElementById('flowers').appendChild(el);
+ setTimeout(()=>el.remove(),17000);
+}
+setInterval(addFlower,700);
+</script>
+</body>
+</html>
