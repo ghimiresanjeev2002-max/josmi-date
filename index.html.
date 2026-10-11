@@ -1,0 +1,410 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Josmi ❤️</title>
+<style>
+:root {
+  --pink: #ff75ac;
+  --deep: #170d25;
+  --glass: rgba(255,255,255,.09);
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: Georgia, "Times New Roman", serif;
+  color: #fff5fb;
+  background:
+    radial-gradient(ellipse at 20% 20%, #54245d 0, transparent 45%),
+    radial-gradient(ellipse at 85% 75%, #421a4c 0, transparent 40%),
+    linear-gradient(145deg, #090914, #211027 60%, #100b1d);
+  overflow-x: hidden;
+}
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: .5;
+  background-image:
+    radial-gradient(2px 2px at 20% 30%, white 50%, transparent 60%),
+    radial-gradient(1px 1px at 75% 15%, white 50%, transparent 60%),
+    radial-gradient(2px 2px at 60% 70%, #ffc1e0 50%, transparent 60%),
+    radial-gradient(1px 1px at 30% 80%, white 50%, transparent 60%),
+    radial-gradient(1px 1px at 90% 50%, white 50%, transparent 60%);
+  background-size: 180px 180px;
+  animation: stars 18s linear infinite;
+}
+@keyframes stars {
+  from { transform: translateY(0); }
+  to { transform: translateY(-180px); }
+}
+.heart {
+  position: fixed;
+  bottom: -40px;
+  z-index: 0;
+  pointer-events: none;
+  color: #ff83b8;
+  opacity: .55;
+  animation: floatUp 10s linear forwards;
+}
+@keyframes floatUp {
+  to { transform: translateY(-115vh) rotate(35deg); opacity: 0; }
+}
+main {
+  position: relative;
+  z-index: 1;
+  width: min(92%, 600px);
+  margin: 0 auto;
+  padding: 32px 0 50px;
+}
+header { text-align: center; margin-bottom: 22px; }
+.eyebrow {
+  color: #ffb8d7;
+  letter-spacing: 4px;
+  font-size: 11px;
+  text-transform: uppercase;
+}
+h1 {
+  font-size: clamp(35px, 8vw, 53px);
+  margin: 12px 0;
+  line-height: 1.1;
+  text-shadow: 0 0 25px #ff75ac66;
+}
+h1 span { color: var(--pink); }
+.subtitle { color: #e5cbdc; line-height: 1.7; }
+.card {
+  display: none;
+  padding: clamp(22px, 6vw, 36px);
+  background: var(--glass);
+  border: 1px solid #ffffff25;
+  border-radius: 25px;
+  backdrop-filter: blur(15px);
+  box-shadow: 0 15px 55px #00000035;
+  animation: appear .45s ease;
+}
+.card.active { display: block; }
+@keyframes appear {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.emoji { font-size: 43px; text-align: center; margin-bottom: 12px; }
+h2 { text-align: center; font-size: 27px; margin: 8px 0 14px; }
+p { line-height: 1.75; color: #f0dce9; }
+.center { text-align: center; }
+.buttons { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-top: 25px; }
+button, .food-option {
+  font-family: inherit;
+  font-size: 15px;
+  cursor: pointer;
+  transition: transform .2s, background .2s;
+}
+button {
+  border: 1px solid #ffffff30;
+  border-radius: 30px;
+  padding: 13px 21px;
+  color: white;
+  background: #ffffff12;
+}
+button:hover { transform: translateY(-2px); }
+button.primary {
+  color: #3c1026;
+  background: linear-gradient(135deg, #ffb0d1, #ff6ba8);
+  border: none;
+  font-weight: bold;
+  box-shadow: 0 5px 22px #ff75ac30;
+}
+button:focus-visible, input:focus-visible, .food-option:focus-visible {
+  outline: 2px solid #ffc0df;
+  outline-offset: 3px;
+}
+.food-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0,1fr));
+  gap: 10px;
+  margin-top: 18px;
+}
+.food-option {
+  color: #fff0f8;
+  background: #ffffff09;
+  border: 1px solid #ffffff2a;
+  border-radius: 15px;
+  padding: 15px 8px;
+}
+.food-option.selected {
+  background: #ff75ac25;
+  border-color: var(--pink);
+  box-shadow: 0 0 15px #ff75ac20;
+}
+label { display: block; margin: 17px 0 8px; color: #ffd0e5; }
+input, textarea {
+  display: block;
+  width: 100%;
+  padding: 13px 14px;
+  color: white;
+  background: #ffffff0c;
+  border: 1px solid #ffffff30;
+  border-radius: 12px;
+  font: 15px Arial, sans-serif;
+}
+input[type="date"], input[type="time"] { color-scheme: dark; }
+textarea { min-height: 85px; resize: vertical; }
+input::placeholder, textarea::placeholder { color: #cbb7c7; }
+.note { font-size: 12px; color: #cdb8cb; }
+.divider { height: 1px; background: #ffffff20; margin: 24px 0; }
+.progress { text-align: center; color: #e7b7d0; font-size: 12px; margin-top: 18px; }
+.final-message {
+  padding: 20px 10px;
+  border-top: 1px solid #ffffff22;
+  border-bottom: 1px solid #ffffff22;
+  font-size: 18px;
+  line-height: 1.9;
+}
+#planSummary {
+  text-align: left;
+  background: #ffffff0a;
+  border-radius: 15px;
+  padding: 16px;
+  margin-top: 20px;
+  line-height: 1.8;
+  overflow-wrap: anywhere;
+}
+footer { text-align: center; padding-top: 24px; color: #bca3b9; font-size: 12px; }
+@media (max-width: 380px) {
+  .food-grid { grid-template-columns: 1fr; }
+  .buttons button { width: 100%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+}
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <div class="eyebrow">A little something from Sanjeev</div>
+    <h1>For you, <span>Josmi</span> ❤️</h1>
+    <p class="subtitle">A little corner of the internet, made just for you.</p>
+  </header>
+
+  <section class="card active" id="proposal">
+    <div class="emoji">🌹</div>
+    <h2>Josmi, may I ask you something?</h2>
+    <p class="center">
+      Out of all the people in this world, there is someone I'd really love
+      to spend a little more time with. That someone is you.
+    </p>
+    <p class="center">So, Josmi… would you go on a special date with me? 💗</p>
+    <div class="buttons">
+      <button class="primary" onclick="showCard('food')">Yes, Sanjeev! ❤️</button>
+      <button onclick="showCard('maybe')">Maybe later 🌷</button>
+    </div>
+    <div class="progress">Made with love · Just for Josmi</div>
+  </section>
+
+  <section class="card" id="maybe">
+    <div class="emoji">🌸</div>
+    <h2>No pressure, Josmi</h2>
+    <p class="center">Take your time. Your feelings matter, and there's no pressure to say yes. Whatever your answer, I hope this little surprise makes you smile.</p>
+    <div class="buttons">
+      <button class="primary" onclick="showCard('proposal')">Go back 💗</button>
+    </div>
+  </section>
+
+  <section class="card" id="food">
+    <div class="emoji">🍓</div>
+    <h2>Let's plan our date!</h2>
+    <p class="center">First, what would you love to eat together?</p>
+    <div class="food-grid" id="foodGrid">
+      <button class="food-option" data-food="Italian">🍝 Italian</button>
+      <button class="food-option" data-food="Pizza">🍕 Pizza</button>
+      <button class="food-option" data-food="Sushi">🍣 Sushi</button>
+      <button class="food-option" data-food="Dessert and coffee">🍰 Dessert & coffee</button>
+      <button class="food-option" data-food="Indian food">🍛 Indian food</button>
+      <button class="food-option" data-food="Surprise me">🎁 Surprise me</button>
+    </div>
+    <label for="otherFood">Or tell me your favourite food</label>
+    <input id="otherFood" maxlength="100" placeholder="Anything you are craving…">
+    <div class="buttons">
+      <button onclick="showCard('proposal')">Back</button>
+      <button class="primary" onclick="goToDetails()">Next, my favourite person →</button>
+    </div>
+  </section>
+
+  <section class="card" id="details">
+    <div class="emoji">🌙</div>
+    <h2>When and where, Josmi?</h2>
+    <p class="center">Let's find a time that works for both of us.</p>
+    <label for="date">Our date</label>
+    <input id="date" type="date">
+    <label for="time">What time suits you?</label>
+    <input id="time" type="time">
+    <label for="location">Where should we meet?</label>
+    <input id="location" maxlength="150" placeholder="A cafe, restaurant, park, or somewhere special">
+    <label for="extra">Anything else you'd love to do? (optional)</label>
+    <textarea id="extra" maxlength="300" placeholder="A sunset walk, flowers, a little surprise…"></textarea>
+    <p class="note">These are your suggestions, Josmi. We'll confirm the plan together.</p>
+    <div class="buttons">
+      <button onclick="showCard('food')">Back</button>
+      <button class="primary" onclick="finishDate()">Continue ❤️</button>
+    </div>
+  </section>
+
+  <section class="card" id="final">
+    <div class="emoji">💖🌹💖</div>
+    <h2>Josmi, you just made my day!</h2>
+    <p class="center">If you're happy to go on this date, here's the little message I wanted you to see.</p>
+    <div class="final-message center">
+      Dear Josmi,<br><br>
+      I made this little website because I wanted to ask you in a way
+      that feels special. Sometimes the simplest moments become the
+      most beautiful memories when you share them with the right person.<br><br>
+      I'd love to spend time with you, hear your stories, see your smile,
+      share good food, and make a lovely memory together.<br><br>
+      No fancy promises — just me, being genuine, and hoping we can
+      share a beautiful day together. ❤️<br><br>
+      <strong>With love, Sanjeev 💌</strong>
+    </div>
+    <div id="planSummary"></div>
+    <div class="buttons">
+      <button class="primary" onclick="sharePlan()">Share our date plan 💌</button>
+      <button onclick="editPlan()">Edit my choices</button>
+    </div>
+    <p class="note center">Your choices stay on this page until you share them. Sanjeev won't receive them automatically.</p>
+  </section>
+
+  <footer>Made with care by Sanjeev, for Josmi ❤️</footer>
+</main>
+
+<script>
+let chosenFood = "";
+
+document.querySelectorAll(".food-option").forEach(button => {
+  button.addEventListener("click", () => {
+    chosenFood = button.dataset.food;
+    document.querySelectorAll(".food-option").forEach(item => {
+      const selected = item === button;
+      item.classList.toggle("selected", selected);
+      item.setAttribute("aria-pressed", String(selected));
+    });
+    document.getElementById("otherFood").value = "";
+  });
+});
+
+document.getElementById("otherFood").addEventListener("input", () => {
+  if (document.getElementById("otherFood").value.trim()) {
+    chosenFood = "";
+    document.querySelectorAll(".food-option").forEach(item => {
+      item.classList.remove("selected");
+      item.setAttribute("aria-pressed", "false");
+    });
+  }
+});
+
+function showCard(id) {
+  document.querySelectorAll(".card").forEach(card => card.classList.remove("active"));
+  document.getElementById(id).classList.add("active");
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+function goToDetails() {
+  const customFood = document.getElementById("otherFood").value.trim();
+  if (!chosenFood && !customFood) {
+    alert("Choose a food or write your favourite first 😊");
+    return;
+  }
+  showCard("details");
+}
+
+function finishDate() {
+  const date = document.getElementById("date").value;
+  const time = document.getElementById("time").value;
+  const location = document.getElementById("location").value.trim();
+  const customFood = document.getElementById("otherFood").value.trim();
+  const food = customFood || chosenFood;
+
+  if (!food || !date || !time || !location) {
+    alert("Please choose your food, date, time, and location first 💗");
+    return;
+  }
+
+  const parsedDate = new Date(date + "T12:00:00");
+  const niceDate = parsedDate.toLocaleDateString(undefined, {
+    weekday: "long", year: "numeric", month: "long", day: "numeric"
+  });
+  const niceTime = new Date("2000-01-01T" + time).toLocaleTimeString([], {
+    hour: "numeric", minute: "2-digit"
+  });
+
+  const summary = document.getElementById("planSummary");
+  summary.replaceChildren();
+
+  const title = document.createElement("strong");
+  title.textContent = "💌 Your suggested date plan";
+  summary.appendChild(title);
+
+  [
+    ["Food", food],
+    ["Date", niceDate],
+    ["Time", niceTime],
+    ["Meeting place", location],
+    ["Extra idea", document.getElementById("extra").value.trim() || "Let's decide together"]
+  ].forEach(([label, value]) => {
+    const line = document.createElement("p");
+    line.style.margin = "8px 0";
+    const strong = document.createElement("strong");
+    strong.textContent = label + ": ";
+    line.append(strong, document.createTextNode(value));
+    summary.appendChild(line);
+  });
+
+  showCard("final");
+}
+
+function editPlan() {
+  showCard("details");
+}
+
+function sharePlan() {
+  const summary = document.getElementById("planSummary").innerText;
+  const message = "Josmi's date suggestion for Sanjeev ❤️\n\n" + summary +
+    "\n\nLet's confirm the plan together! 💗";
+  if (navigator.share) {
+    navigator.share({ title: "Our date plan ❤️", text: message }).catch(() => {});
+  } else if (navigator.clipboard && window.isSecureContext) {
+    navigator.clipboard.writeText(message)
+      .then(() => alert("Date plan copied! You can now send it to Sanjeev 💌"))
+      .catch(() => showShareText(message));
+  } else {
+    showShareText(message);
+  }
+}
+
+function showShareText(message) {
+  const area = document.createElement("textarea");
+  area.value = message;
+  area.setAttribute("aria-label", "Copy your date plan");
+  area.style.marginTop = "15px";
+  document.getElementById("final").appendChild(area);
+  area.focus();
+  area.select();
+  alert("Copy this date plan and send it to Sanjeev 💌");
+}
+
+function createHeart() {
+  const heart = document.createElement("span");
+  heart.className = "heart";
+  heart.textContent = Math.random() > .5 ? "♥" : "♡";
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.fontSize = (12 + Math.random() * 18) + "px";
+  heart.style.animationDuration = (7 + Math.random() * 6) + "s";
+  document.body.appendChild(heart);
+  setTimeout(() => heart.remove(), 14000);
+}
+setInterval(createHeart, 900);
+</script>
+</body>
+</html>
